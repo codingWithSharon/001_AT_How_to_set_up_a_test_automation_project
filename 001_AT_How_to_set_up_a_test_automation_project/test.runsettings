@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<!-- Playwright configuration -->
+	<Playwright>
+		<!-- Possible values: chromium, firefox, webkit -->
+		<BrowserName>firefox</BrowserName>
+
+		<LaunchOptions>
+			<!-- Always headed when developing locally -->
+			<Headless>false</Headless>
+
+			<!-- 100–300 ms is perfect to follow what’s happening -->
+			<SlowMo>150</SlowMo>
+
+			<!-- Optional but very nice: start maximized -->
+			<Args>
+				<Arg>--start-maximized</Arg>
+				<Arg>--disable-web-security</Arg>
+				<!-- sometimes needed for YouTube embeds -->
+				<Arg>--disable-features=ImprovedCookieControls</Arg>
+			</Args>
+		</LaunchOptions>
+
+		<!-- Expect timeout (default is 30s, we increase a bit for YouTube) -->
+		<ExpectTimeout>15000</ExpectTimeout>
+	</Playwright>
+
+	<!-- Environment variables (very clean way instead of launchSettings.json) -->
+	<RunConfiguration>
+		<EnvironmentVariables>
+			<YouTubeBaseUrl>https://www.youtube.com/</YouTubeBaseUrl>
+			<GoogleBaseUrl>https://www.google.nl/</GoogleBaseUrl>
+			<!-- .nl because you're in NL -->
+			<IntranetBaseUrl>https://intranet.mycompany.nl/</IntranetBaseUrl>
+			<!-- Easy switch between environments -->
+			<TestEnvironment>Development</TestEnvironment>
+		</EnvironmentVariables>
+	</RunConfiguration>
+</RunSettings>
