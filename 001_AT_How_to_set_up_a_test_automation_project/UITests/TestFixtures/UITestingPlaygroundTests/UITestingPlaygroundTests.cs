@@ -20,6 +20,13 @@ public class UITestingPlaygroundTests : Setup
         await uITestingPlaygroundPage.ClickHomeButton();
         await Expect(uITestingPlaygroundPage._dynamicPageDynamicButton).Not.ToBeVisibleAsync();
         await Expect(uITestingPlaygroundPage._homePageOverview).ToBeVisibleAsync();
-        Console.WriteLine("Quick navigation of the website to check that basic functionality is working");
+        await uITestingPlaygroundPage.ItemChecker();
+        Console.WriteLine("""   
+                    Quick navigation of the website to check that basic functionality is working. Checks include:
+
+                    - Navigating via the navigation bar
+                    - Checking if the correct elements are present on the overview page
+                    - Navigating to an item page and checking if the correct elements are present
+                    """);
     }
 }
