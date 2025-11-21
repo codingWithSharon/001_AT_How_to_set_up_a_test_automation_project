@@ -31,6 +31,8 @@ public class Setup : ContextTest
         };
     }
 
+    public bool _tracingStarted = false;
+
     [SetUp]
     public async Task StartTracing()
     {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Playwright;
+using NUnit.Framework;
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels;
 
@@ -25,7 +26,11 @@ public class UITestingPlaygroundPage : BasePage
     public ILocator _dynamicPageDynamicButton => Page.Locator("xpath=//*[@class='btn btn-primary']");
     #endregion
 
-    #region basic operations
+    #region class attribute page
+    public ILocator _classAttributePageBlueButton => Page.Locator("xpath=(//button[contains(concat(' ', normalize-space(@class), ' '), ' btn-primary ')])[1]");
+    #endregion
+
+    #region basic operations overview page
     public async Task GoToUITestingPlayground()
     {
         await Page.GotoAsync("http://www.uitestingplayground.com/");
@@ -57,6 +62,13 @@ public class UITestingPlaygroundPage : BasePage
     }
     #endregion
 
+    #region basic operations class attribute page
+    public async Task ClickBlueButton()
+    {
+        await _classAttributePageBlueButton.ClickAsync();
+    }
+    #endregion
+
     #region complex operations
     public async Task ItemChecker()
     {
@@ -76,6 +88,19 @@ public class UITestingPlaygroundPage : BasePage
         }
 
         Console.WriteLine("=== Total 9 items listed successfully ===\n");
+    }
+
+    public async Task DialogPopupHandler()
+    {
+        Page.Dialog += async (_, dialog) =>
+        {
+            Console.WriteLine($"Dialog detected → Type: {dialog.Type}, Message: '{dialog.Message}'");
+            await dialog.DismissAsync();
+        };
+
+        await Page.EvaluateAsync("() => alert('This alert was handled by Playwright!')");
+        var title = await Page.TitleAsync();
+        Assert.That(title, Is.Not.Null.Or.Empty);
     }
     #endregion
 }
