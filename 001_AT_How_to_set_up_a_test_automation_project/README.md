@@ -21,26 +21,26 @@ Step 3 : Install the following:
 
 Step 4 : Create a folder structure like this:
 
-	- ProjectName
-		- UITests
-		- PageObjectModels
-			- BasePage.cs
-			- WebsiteNameXPages
-				- HomePage.cs
-				- LoginPage.cs
-			- WebsiteNameYPages
-				- HomePage.cs
-				- LoginPage.cs
-		- TestFixtures
-			- WebsiteNameXTests
-				HomePageTests.cs
-				LoginPageTests.cs
-			- WebsiteNameYTests
-				HomePageTests.cs
-				LoginPageTests.cs
-		- Setup.cs
-		- test.runsettings
-		- README.md
+**ProjectName/**
+├── **UITests/**
+├── **PageObjectModels/**
+│   ├── BasePage.cs
+│   ├── **WebsiteNameXPages/**
+│   │   ├── HomePage.cs
+│   │   └── LoginPage.cs
+│   └── **WebsiteNameYPages/**
+│       ├── HomePage.cs
+│       └── LoginPage.cs
+├── **TestFixtures/**
+│   ├── **WebsiteNameXTests/**
+│   │   ├── HomePageTests.cs
+│   │   └── LoginPageTests.cs
+│   └── **WebsiteNameYTests/**
+│       ├── HomePageTests.cs
+│       └── LoginPageTests.cs
+├── Setup.cs
+├── test.runsettings
+└── README.md
 
 Step 5 : In the Setup.cs file, set up the Playwright browser and context initialization and teardown methods.
 Step 6 : In the BasePage.cs file, create a base page class that contains common methods and properties for all page objects.
