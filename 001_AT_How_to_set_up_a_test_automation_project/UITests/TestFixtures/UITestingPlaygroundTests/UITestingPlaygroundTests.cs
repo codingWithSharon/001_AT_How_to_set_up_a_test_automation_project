@@ -47,5 +47,58 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
+    [Test, Retry(2)]
+    public async Task LoadDelayItemTest()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(2, 4);
+        await Task.Delay(1000);
+        await Expect(uITestingPlaygroundPage._loadDelayPageButton).ToBeVisibleAsync();
+        await uITestingPlaygroundPage.ClickLoadDelayButton();
+        Console.WriteLine("""   
+                    Testing the Load Delay item by clicking the button that appears after a delay.
+                    Playwright's default timeout will handle waiting for the button to appear.
+                    """);
+    }
 
+    [Test, Retry(2)]
+    public async Task AjaxData()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(2, 1);
+        await uITestingPlaygroundPage.ClickAjaxButton();
+        await Task.Delay(1500);
+        await Expect(uITestingPlaygroundPage._dataLoaded).ToBeVisibleAsync();
+        Console.WriteLine("""   
+                    Testing the Ajax Data item by clicking the button and waiting for the data to load.
+                    By added delay we ensure the data has time to load before we check for its visibility.
+                    """);
+    }
+
+    [Test, Retry(2)]
+    public async Task Click()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(2, 3);
+        await uITestingPlaygroundPage.ClickBadButton();
+        Console.WriteLine("""   
+                    Testing the Bad Button item by clicking the button that is known to be problematic.
+                    This test ensures that our automation can handle such cases gracefully.
+                    """);
+    }
+
+    [Test, Retry(2)]
+    public async Task TextInput()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(2, 4);
+        await uITestingPlaygroundPage.FillTextInput("New Button Name");
+        await uITestingPlaygroundPage.ClickUpdatedTextButton();
+        await Expect(uITestingPlaygroundPage._updatedTextButton).ToHaveTextAsync("New Button Name");
+
+        Console.WriteLine("""   
+                    Testing the Text Input item by filling in text and verifying the input value.
+                    This test ensures that text input fields can be interacted with correctly.
+                    """);
+    }
 }

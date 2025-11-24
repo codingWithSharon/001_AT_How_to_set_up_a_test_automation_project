@@ -19,7 +19,8 @@ public class UITestingPlaygroundPage : BasePage
     public ILocator _homePageTitle => Page.Locator("#title");
     public ILocator _homePageOverview => Page.Locator("#overview");
     public ILocator SelectAutomationPitfallsLoop(int row, int column) { return Page.Locator($"xpath=/html/body/section[2]/div/div[{row}]/div[{column}]/h3/a"); }
-    public ILocator SelectAutomationPitfalls(int row, int column) { return Page.Locator($"xpath=/html/body/section[2]/div/div[{row}]/div[{column}]/h3/a"); }
+    //public ILocator SelectAutomationPitfalls(int row, int column) { return Page.Locator($"xpath=/html/body/section[2]/div/div[{row}]/div[{column}]/h3/a"); } // OLD
+    public ILocator SelectAutomationPitfalls(int row, int column) { return Page.Locator($"//*[@id=\"overview\"]/div/div[{row}]/div[{column}]/h3/a"); } // NEW
     #endregion
 
     #region dynamic page
@@ -28,6 +29,24 @@ public class UITestingPlaygroundPage : BasePage
 
     #region class attribute page
     public ILocator _classAttributePageBlueButton => Page.Locator("xpath=(//button[contains(concat(' ', normalize-space(@class), ' '), ' btn-primary ')])[1]");
+    #endregion
+
+    #region load delay page
+    public ILocator _loadDelayPageButton => Page.Locator("xpath=//button[@class='btn btn-primary']");
+    #endregion
+
+    #region ajax data page
+    public ILocator _ajaxButton => Page.Locator("#ajaxButton"); 
+    public ILocator _dataLoaded => Page.Locator("xpath=//*[@class='bg-success']");
+    #endregion
+
+    #region bad button page
+    public ILocator _badButton => Page.Locator("#badButton");
+    #endregion
+
+    #region text input
+    public ILocator _textInputBox => Page.Locator("#newButtonName");
+    public ILocator _updatedTextButton => Page.Locator("#updatingButton");
     #endregion
 
     #region basic operations overview page
@@ -66,6 +85,39 @@ public class UITestingPlaygroundPage : BasePage
     public async Task ClickBlueButton()
     {
         await _classAttributePageBlueButton.ClickAsync();
+    }
+    #endregion
+
+    #region basic opaerations load delay page
+    public async Task ClickLoadDelayButton()
+    {
+        await _loadDelayPageButton.ClickAsync();
+    }
+    #endregion
+
+    #region basic operations ajax data page
+    public async Task ClickAjaxButton()
+    {
+        await _ajaxButton.ClickAsync();
+    }
+    #endregion
+
+    #region basic operations bad button page
+    public async Task ClickBadButton()
+    {
+        await _badButton.ClickAsync();
+    }
+    #endregion
+
+    #region basic operations text input page
+    public async Task FillTextInput(string inputText)
+    {
+        await _textInputBox.FillAsync(inputText);
+    }
+
+    public async Task ClickUpdatedTextButton()
+    {
+        await _updatedTextButton.ClickAsync();
     }
     #endregion
 
