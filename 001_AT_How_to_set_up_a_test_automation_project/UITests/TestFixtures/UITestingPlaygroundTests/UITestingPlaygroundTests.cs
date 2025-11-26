@@ -101,4 +101,32 @@ public class UITestingPlaygroundTests : Setup
                     This test ensures that text input fields can be interacted with correctly.
                     """);
     }
+
+    [Test, Retry(2)]
+    public async Task ScrollBars()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(3, 1);
+        await uITestingPlaygroundPage.ClickHiddenButton();
+        Console.WriteLine("""   
+                    Testing the Scroll Bars item by clicking a button that is initially hidden.
+                    This test ensures that our automation can scroll to and interact with hidden elements.
+                    """);
+    }
+
+    [Test, Retry(2)]
+    public async Task ProgressBar()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(3, 4);
+        await uITestingPlaygroundPage.ClickStartButton();
+        await uITestingPlaygroundPage.WaitForProgressBarToReach(75);
+        await uITestingPlaygroundPage.ClickStopButton();
+        await Expect(uITestingPlaygroundPage._progressBar).ToHaveAttributeAsync("aria-valuenow", "75");
+        Console.WriteLine("""   
+                    Testing the Progress Bar item by starting the progress and stopping it at 75%.
+                    This test ensures that our automation can interact with dynamic progress elements.
+                    """);
+    }
+
 }
