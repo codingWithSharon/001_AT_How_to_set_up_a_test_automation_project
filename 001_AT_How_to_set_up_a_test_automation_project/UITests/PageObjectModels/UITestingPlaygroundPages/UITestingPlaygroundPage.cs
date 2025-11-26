@@ -49,6 +49,16 @@ public class UITestingPlaygroundPage : BasePage
     public ILocator _updatedTextButton => Page.Locator("#updatingButton");
     #endregion
 
+    #region scroll bars
+    public ILocator _hiddenButton => Page.Locator("#hidingButton");
+    #endregion
+
+    #region progress bar
+    public ILocator _startButton => Page.Locator("#startButton");
+    public ILocator _stopButton => Page.Locator("#stopButton");
+    public ILocator _progressBar => Page.Locator("#progressBar");
+    #endregion
+
     #region basic operations overview page
     public async Task GoToUITestingPlayground()
     {
@@ -120,6 +130,63 @@ public class UITestingPlaygroundPage : BasePage
         await _updatedTextButton.ClickAsync();
     }
     #endregion
+
+    #region basic operations scroll bars page
+    public async Task ClickHiddenButton()
+    {
+        await _hiddenButton.ClickAsync();
+    }
+    #endregion
+
+    #region basic operations progress bar page
+    public async Task ClickStartButton()
+    {
+        await _startButton.ClickAsync();
+    }
+
+    public async Task ClickStopButton()
+    {
+        await _stopButton.ClickAsync();
+    }
+
+    public async Task<double> GetProgressBarValue()
+    {
+        string progressValue = await _progressBar.GetAttributeAsync("aria-valuenow") ?? "0";
+        return double.Parse(progressValue);
+        Console.WriteLine($"Current Progress Bar Value: {progressValue}");
+    }
+
+    public async Task GetProgressBarValuAndCompare()
+    {
+        string valueText = await Page.GetAttributeAsync(".progress-bar", "aria-valuenow");
+        int currentValue = int.Parse(valueText);
+        if (currentValue == 75)
+        {
+            Console.WriteLine("Progress bar has reached 75%.");
+        }
+        else
+        {
+            Console.WriteLine($"Progress bar is at {currentValue}%, not 75%.");
+        }
+    }
+
+    public async Task WaitForProgressBarToReach(double targetValue)
+    {
+        while (true)
+        {
+            double currentValue = await GetProgressBarValue();
+            if (currentValue == targetValue)
+            {
+                break;
+            }
+            await Task.Delay(100);
+        }
+    }
+    #endregion
+
+
+
+    // ========= COMPLEX OPERATIONS ========= //
 
     #region complex operations
     public async Task ItemChecker()
