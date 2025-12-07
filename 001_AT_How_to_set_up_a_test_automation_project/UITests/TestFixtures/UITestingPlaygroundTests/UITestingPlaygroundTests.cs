@@ -1,7 +1,13 @@
-﻿using Microsoft.Playwright;
+﻿//using Microsoft.Playwright;
+//using NUnit.Framework;
+//using System;
+//using UITestingPlaygroundPage;
+
+using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;           // This brings in Expect()
 using NUnit.Framework;
-using System;
-using UITestingPlaygroundPage;
+using PagesSetup;                           // For your Setup base class
+using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels;
 
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.Testfixtures;

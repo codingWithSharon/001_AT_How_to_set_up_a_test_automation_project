@@ -2,18 +2,20 @@
 
 
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels;
+using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
 
-namespace UITestingPlaygroundPage;
+namespace PagesSetup;
 
 public class Setup : ContextTest
 {
     public IAPIRequestContext IAPIRequestContext { get; private set; } = null!;
     public IPage Page { get; private set; } = null!;
 
-    public _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.UITestingPlaygroundPage uITestingPlaygroundPage = null!;
+    public UITestingPlaygroundPage uITestingPlaygroundPage = null!;
+    public LoginSauceDemoPage loginSauceDemoPage = null!;
 
     public override BrowserNewContextOptions ContextOptions()
     {
@@ -51,6 +53,9 @@ public class Setup : ContextTest
             Sources = true,
             Title = $"{TestContext.CurrentContext.Test.FullName}"
         });
+        //loginSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.LoginSauceDemoPage(Page);
+        loginSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages.LoginSauceDemoPage(Page);
+
     }
 
     [TearDown]
