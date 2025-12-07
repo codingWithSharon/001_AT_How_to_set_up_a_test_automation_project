@@ -59,6 +59,21 @@ public class UITestingPlaygroundPage : BasePage
     public ILocator _progressBar => Page.Locator("#progressBar");
     #endregion
 
+    #region mouse over page
+    //public ILocator _clickMeButton => Page.Locator("(//*[@class='text-primary'])[1]");
+    public ILocator _clickMeButton => Page.Locator("xpath=/html/body/section/div/div[1]/a");
+    public ILocator _linkButton => Page.Locator("(//*[@class='text-primary'])[2]");
+    public ILocator _clickCountClickMeButton => Page.Locator("#clickCount");
+    public ILocator _clickCountLinkButton => Page.Locator("#clickButtonCount");
+    #endregion
+
+    #region sample app
+    public ILocator _inputUserName => Page.Locator("xpath=(//*[@class='form-control'])[1]");
+    public ILocator _inputPassword => Page.Locator("xpath=(//*[@class='form-control'])[2]");
+    public ILocator _buttonLogin => Page.Locator("#login");
+    public ILocator _textLoginStatus => Page.Locator("#loginstatus");
+    #endregion
+
     #region basic operations overview page
     public async Task GoToUITestingPlayground()
     {
@@ -184,7 +199,33 @@ public class UITestingPlaygroundPage : BasePage
     }
     #endregion
 
+    #region basic operations mouse over page
+    public async Task ClickClickMeButton()
+    {
+        await _clickMeButton.ClickAsync();
+    }
+    public async Task HoverLinkButton()
+    {
+        await _linkButton.ClickAsync();
+    }
+    #endregion
 
+    #region basic operations sample app
+    public async Task FillInUserName(string userName)
+    {
+        await _inputUserName.FillAsync(userName);
+    }
+
+    public async Task FillInPassword(string password)
+    {
+        await _inputPassword.FillAsync(password);
+    }
+
+    public async Task ClickLoginButton()
+    {
+        await _buttonLogin.ClickAsync();
+    }
+    #endregion
 
     // ========= COMPLEX OPERATIONS ========= //
 

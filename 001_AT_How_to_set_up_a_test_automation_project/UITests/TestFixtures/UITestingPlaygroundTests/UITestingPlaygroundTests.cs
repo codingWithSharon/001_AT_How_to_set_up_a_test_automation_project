@@ -129,4 +129,37 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
+    [Test, Retry(2)]
+    public async Task MouseOver()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(4, 3);
+        await uITestingPlaygroundPage.ClickClickMeButton();
+        await uITestingPlaygroundPage.ClickClickMeButton();
+        await Expect(uITestingPlaygroundPage._clickCountClickMeButton).ToHaveTextAsync("2");
+        Console.WriteLine("""   
+                    Recording the amount of clicks.
+                    """);
+    }
+
+    [Test, Retry(2)]
+    public async Task LoginSampleApp()
+    {
+        await uITestingPlaygroundPage.GoToUITestingPlayground();
+        await uITestingPlaygroundPage.SelectAnAutomationPitfall(4, 2);
+        await uITestingPlaygroundPage.FillInUserName("testuser");
+        await uITestingPlaygroundPage.FillInPassword("testpassword");
+        await uITestingPlaygroundPage.ClickLoginButton();
+        await Expect(uITestingPlaygroundPage._textLoginStatus).ToHaveTextAsync("Invalid username/password");
+        await uITestingPlaygroundPage.FillInUserName("admin");
+        await uITestingPlaygroundPage.FillInPassword("pwd");
+        await uITestingPlaygroundPage.ClickLoginButton();
+        await Expect(uITestingPlaygroundPage._textLoginStatus).ToHaveTextAsync("Welcome, admin!");
+        Console.WriteLine("""   
+                    Testing the Sample App login functionality with invalid credentials.
+                    This test ensures that the login process handles incorrect inputs appropriately.
+                    In the second part, we test with valid credentials to ensure successful login.
+                    """);
+    }
+
 }
