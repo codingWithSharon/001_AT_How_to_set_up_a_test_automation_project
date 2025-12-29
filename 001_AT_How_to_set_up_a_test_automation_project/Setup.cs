@@ -16,6 +16,7 @@ public class Setup : ContextTest
 
     public UITestingPlaygroundPage uITestingPlaygroundPage = null!;
     public LoginSauceDemoPage loginSauceDemoPage = null!;
+    public WebshopProductsSauceDemoPage webshopProductsSauceDemoPage = null!;
 
     public override BrowserNewContextOptions ContextOptions()
     {
@@ -55,6 +56,7 @@ public class Setup : ContextTest
         });
         //loginSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.LoginSauceDemoPage(Page);
         loginSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages.LoginSauceDemoPage(Page);
+        webshopProductsSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages.WebshopProductsSauceDemoPage(Page);
 
     }
 

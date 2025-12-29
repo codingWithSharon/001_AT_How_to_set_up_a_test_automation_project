@@ -11,6 +11,8 @@ public class LoginSauceDemoPage : BasePage
     public ILocator _inputUsername => Page.Locator("#user-name");
     public ILocator _inputPassword => Page.Locator("#password");
     public ILocator _loginButton => Page.Locator("#login-button");
+    public ILocator _headerWebshop => Page.Locator("//*[@class='header_secondary_container']");
+    public ILocator _errorMessage => Page.Locator("//*[@class='error-message-container error']");
     #endregion
 
     #region basic operations login page
