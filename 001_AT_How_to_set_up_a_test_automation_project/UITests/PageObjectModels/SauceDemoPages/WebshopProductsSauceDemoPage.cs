@@ -12,7 +12,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectMode
         public WebshopProductsSauceDemoPage(IPage page) : base(page) { }
 
         #region general
-        public ILocator 
+        //public ILocator 
         #endregion
 
         #region basic operations login page
