@@ -194,7 +194,7 @@ public class UITestingPlaygroundPage : BasePage
             {
                 break;
             }
-            await Task.Delay(50);
+            //await Task.Delay(50);
         }
     }
     #endregion
