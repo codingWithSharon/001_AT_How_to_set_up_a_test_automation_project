@@ -22,10 +22,8 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Install Playwright Browsers
-        run: pwsh bin/Release/net8.0/playwright.ps1 install --with-deps
-        # Adjust the path if your target framework or project name differs:
-        # e.g., bin/Release/net8.0/YourProjectName/playwright.ps1
-        # For multi-project solutions, point to the test project output.
+        run: pwsh -Command "& 'bin/Release/net8.0/playwright.ps1' install --with-deps"
+        # Alternative (also works): pwsh ./bin/Release/net8.0/playwright.ps1 install --with-deps
 
       - name: Run tests
         run: dotnet test --configuration Release --no-build
