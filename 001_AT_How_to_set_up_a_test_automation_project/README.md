@@ -67,6 +67,8 @@ Step 8 : In the TestFixtures folder, create test classes for each set of related
 Step 9 : Configure the test.runsettings file to specify any necessary settings for your tests.
 Step 10 : Write your test cases using the page object models to interact with the web pages and start testing.
 
+Step 11 : Setup CI/CD pipeline (optional) with GitHub Actionns
+
 ## Practice websites
 
 For practice, you can use the following websites:
