@@ -1,16 +1,30 @@
-- name: Setup .NET
-  uses: actions/setup-dotnet@v4
-  with:
-    dotnet-version: '8.0.x'
+name: Playwright Tests
 
-- name: Restore dependencies
-  run: dotnet restore
+on:
+  push:
+    branches:
+      - main
 
-- name: Build
-  run: dotnet build --configuration Release
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-- name: Install Playwright Browsers
-  run: dotnet tool run playwright install --with-deps
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
 
-- name: Run tests
-  run: dotnet test --configuration Release
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Install Playwright Browsers
+        run: dotnet tool run playwright install --with-deps
+
+      - name: Run tests
+        run: dotnet test --configuration Release
