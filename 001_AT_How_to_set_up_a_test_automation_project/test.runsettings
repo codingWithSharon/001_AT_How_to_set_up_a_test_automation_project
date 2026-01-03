@@ -18,7 +18,12 @@
 				<Arg>--disable-web-security</Arg>
 				<!-- sometimes needed for YouTube embeds -->
 				<Arg>--disable-features=ImprovedCookieControls</Arg>
+				<Arg>--autoplay-policy=no-user-gesture-required</Arg>
 			</Args>
+			<FirefoxUserPrefs>
+				<media.autoplay.default>0</media.autoplay.default>
+				<media.autoplay.blocking_policy>0</media.autoplay.blocking_policy>
+			</FirefoxUserPrefs>
 		</LaunchOptions>
 
 		<!-- Expect timeout (default is 30s, we increase a bit for YouTube) -->
