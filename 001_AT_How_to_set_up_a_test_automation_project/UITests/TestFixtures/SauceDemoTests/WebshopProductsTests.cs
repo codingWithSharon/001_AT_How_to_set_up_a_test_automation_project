@@ -9,11 +9,11 @@ using PagesSetup;
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.SauceDemoTests
 {
-    [TestFixture]
+    [TestFixture, Order(2)]
     [Parallelizable(ParallelScope.None)]
     public class WebshopProductsTests : Setup
     {
-        [Test, Retry(2)]
+        [Test, Order(1), Retry(2)]
         public async Task SelectAddAndCheckout()
         {
             await loginSauceDemoPage.GoToLoginSauceDemoPage();

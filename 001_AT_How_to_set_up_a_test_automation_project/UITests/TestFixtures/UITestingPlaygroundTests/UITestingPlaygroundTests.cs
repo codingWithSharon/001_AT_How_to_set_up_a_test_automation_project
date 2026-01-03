@@ -12,12 +12,13 @@ using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels;
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.Testfixtures;
 
-[TestFixture]
+[TestFixture, Order(2)]
 //[Parallelizable(ParallelScope.Children)]
-[Parallelizable(ParallelScope.None)]
+//[Parallelizable(ParallelScope.None)]
+[Parallelizable(ParallelScope.Fixtures)]
 public class UITestingPlaygroundTests : Setup
 {
-    [Test, Retry(2)]
+    [Test, Order(1), Retry(2)]
     public async Task NavigatingTheWebSite()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -39,7 +40,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(2), Retry(2)]
     public async Task ClassAttributeItemTest()
     {
         await uITestingPlaygroundPage.DialogPopupHandler();
@@ -53,7 +54,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(3), Retry(2)]
     public async Task LoadDelayItemTest()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -67,7 +68,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(4), Retry(2)]
     public async Task AjaxData()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -81,7 +82,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(5), Retry(2)]
     public async Task Click()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -93,7 +94,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(6), Retry(2)]
     public async Task TextInput()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -108,7 +109,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(7), Retry(2)]
     public async Task ScrollBars()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -120,7 +121,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(8), Retry(2)]
     public async Task ProgressBar()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -135,7 +136,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(9), Retry(2)]
     public async Task MouseOver()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
@@ -148,7 +149,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Retry(2)]
+    [Test, Order(10), Retry(2)]
     public async Task LoginSampleApp()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();

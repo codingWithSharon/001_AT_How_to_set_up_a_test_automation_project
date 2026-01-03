@@ -7,11 +7,11 @@ using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels;
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.SauceDemoTests
 {
-    [TestFixture]
+    [TestFixture, Order(1)]
     [Parallelizable(ParallelScope.None)]
     public class LoginTests : Setup
     {
-        [Test,Retry(2)]
+        [Test, Order(1), Retry(2)]
         public async Task Login_StandardUser()
         {
             await loginSauceDemoPage.GoToLoginSauceDemoPage();
@@ -24,7 +24,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.S
                     """);
         }
 
-        [Test, Retry(2)]
+        [Test, Order(2), Retry(2)]
         public async Task Login_locked_out_user()
         {
             await loginSauceDemoPage.GoToLoginSauceDemoPage();
@@ -37,7 +37,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.S
                     """);
         }
 
-        [Test, Retry(2)]
+        [Test, Order(3), Retry(2)]
         public async Task Login_problem_user()
         {
             await loginSauceDemoPage.GoToLoginSauceDemoPage();
