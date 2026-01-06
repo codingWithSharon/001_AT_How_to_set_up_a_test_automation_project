@@ -22,7 +22,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Install Playwright Browsers
-        run: pwsh -File bin/Debug/net8.0/playwright.ps1 install --with-deps
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
 
       - name: Run tests
         run: dotnet test --configuration Release --no-build
