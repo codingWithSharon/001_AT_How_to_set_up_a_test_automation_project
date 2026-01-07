@@ -73,8 +73,10 @@ public class UITestingPlaygroundTests : Setup
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
         await uITestingPlaygroundPage.SelectAnAutomationPitfall(2, 1);
+        await Task.Delay(1000);
         await uITestingPlaygroundPage.ClickAjaxButton();
         await Task.Delay(1500);
+        await Task.Delay(1000);
         await Expect(uITestingPlaygroundPage._dataLoaded).ToBeVisibleAsync();
         Console.WriteLine("""   
                     Testing the Ajax Data item by clicking the button and waiting for the data to load.
