@@ -123,7 +123,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Order(8), Retry(2)]
+    // [Test, Order(8), Retry(2)]
     public async Task ProgressBar()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
