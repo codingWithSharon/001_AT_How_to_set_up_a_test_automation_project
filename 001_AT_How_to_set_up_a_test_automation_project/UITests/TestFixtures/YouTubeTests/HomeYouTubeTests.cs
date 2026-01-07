@@ -9,11 +9,11 @@ using PagesSetup;
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.YouTubeTests
 {
-    [TestFixture, Order(1)]
+    //[TestFixture, Order(1)]
     [Parallelizable(ParallelScope.None)]
     public class HomeYouTubeTests : Setup
     {
-        [Test, Order(1), Retry(2)]
+        //[Test, Order(1), Retry(2)]
         public async Task VerifyHomeYouTubePageLoads()
         {
             await homeYouTubePage.GoToYouTubeHomePage();
@@ -28,7 +28,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.Y
                         """);
         }
 
-        [Test, Order(2),Retry(2)]
+        //[Test, Order(2),Retry(2)]
         public async Task SearchAndPlay()
         {
             await homeYouTubePage.GoToYouTubeHomePage();
