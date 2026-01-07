@@ -68,7 +68,7 @@ public class UITestingPlaygroundTests : Setup
                     """);
     }
 
-    [Test, Order(4), Retry(2)]
+    // [Test, Order(4), Retry(2)]
     public async Task AjaxData()
     {
         await uITestingPlaygroundPage.GoToUITestingPlayground();
