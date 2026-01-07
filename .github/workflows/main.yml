@@ -4,7 +4,9 @@ on:
   push:
     branches: [ main ]
   pull_request:
-
+  schedule: 
+    ##- cron: "0 19 * * *" # Run daily at 20:00 Netherlands time (approx)
+    - cron: "30 16 * * *" # Run daily at 17:30 Netherlands time
 jobs:
   test:
     runs-on: ubuntu-latest
