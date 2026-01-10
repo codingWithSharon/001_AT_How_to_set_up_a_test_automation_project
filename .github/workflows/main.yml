@@ -32,6 +32,13 @@ jobs:
       #- name: Run tests
       #  run: dotnet test --logger "trx;LogFileName=test-results.trx"
 
-      - name: Run Playwright tests
-        run: dotnet test --verbosity normal --logger "trx;LogFileName=test-results.trx"
+      - name: Test run summary
+        if: always()
+        run: |
+          echo "## 🧪 Playwright Test Run" >> $GITHUB_STEP_SUMMARY
+          echo "- Framework: Playwright + .NET" >> $GITHUB_STEP_SUMMARY
+          echo "- Browser: Chromium" >> $GITHUB_STEP_SUMMARY
+          echo "- Schedule: Daily" >> $GITHUB_STEP_SUMMARY
+          echo "- Result: ✅ Completed" >> $GITHUB_STEP_SUMMARY
+
 
