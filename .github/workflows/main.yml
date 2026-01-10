@@ -33,10 +33,7 @@ jobs:
       #  run: dotnet test --logger "trx;LogFileName=test-results.trx"
 
       - name: Run Playwright tests
-        run: |
-            echo "::group::🧪 Playwright Test Execution"
-            dotnet test --verbosity detailed
-            echo "::endgroup::"
+        run: dotnet test --verbosity detailed --logger "trx;LogFileName=test-results.trx"
 
 
 
