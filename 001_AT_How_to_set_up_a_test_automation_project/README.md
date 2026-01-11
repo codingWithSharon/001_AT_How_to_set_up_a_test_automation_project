@@ -68,6 +68,9 @@ Step 9 : Configure the test.runsettings file to specify any necessary settings f
 Step 10 : Write your test cases using the page object models to interact with the web pages and start testing.
 
 Step 11 : Setup CI/CD pipeline (optional) with GitHub Actionns
+			- Make sure to setup Chromiun browser in test.runsettings file so you avoid this error: " NS_ERROR_FILE_NO_DEVICE_SPACE":
+					-	Console.WriteLine do not automatically get printed when the test is run in the pipeline, so you can use a logger instead.
+						There is a flag "-verbosity detailed" that you van add to print the console output in the pipeline logs, but that can cause an error in the pipeline.
 
 ## Practice websites
 

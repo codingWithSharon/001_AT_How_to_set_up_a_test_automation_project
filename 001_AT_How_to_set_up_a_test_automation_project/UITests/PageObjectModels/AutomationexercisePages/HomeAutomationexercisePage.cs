@@ -45,44 +45,44 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectMode
         {
             if (await _consentButton.IsVisibleAsync())
             {
-                await _consentButton.ClickAsync();
+                await _consentButton.ClickAsync(new() { Force = true });
             }
         }
         public async Task ClickHomeButton()
         {
-            await _homeButton.ClickAsync();
+            await _homeButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickProductButton()
         {
-            await _productButton.ClickAsync();
+            await _productButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickCartButton()
         {
-            await _cartButton.ClickAsync();
+            await _cartButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickSignupLoginButton()
         {
-            await _signupLoginButton.ClickAsync();
+            await _signupLoginButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickTestcasesButton()
         {
-            await _testcasesButton.ClickAsync();
+            await _testcasesButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickApiTestingButton()
         {
-            await _apiTestingButton.ClickAsync();
+            await _apiTestingButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickVideoTutorialsButton()
         {
-            await _videoTutorialsButton.ClickAsync();
+            await _videoTutorialsButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickContactUsButton()
         {
-            await _contactUsButton.ClickAsync();
+            await _contactUsButton.ClickAsync(new() { Force = true });
         }
         public async Task ClickAcceptAllButton()
         {
-            await _acceptAllButton.ClickAsync();
+            await _acceptAllButton.ClickAsync(new() { Force = true });
         }
         #endregion
     }
