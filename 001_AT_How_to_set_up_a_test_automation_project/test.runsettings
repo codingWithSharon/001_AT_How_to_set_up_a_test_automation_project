@@ -3,7 +3,9 @@
 	<!-- Playwright configuration -->
 	<Playwright>
 		<!-- Possible values: chromium, firefox, webkit -->
-		<BrowserName>firefox</BrowserName>
+		<!--Use Chromium for CI run in GitHub -->
+		<BrowserName>chromium</BrowserName>
+		
 
 		<LaunchOptions>
 			<!-- Always headed when developing locally -->
