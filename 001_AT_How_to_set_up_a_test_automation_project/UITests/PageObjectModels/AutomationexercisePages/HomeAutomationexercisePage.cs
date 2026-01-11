@@ -80,10 +80,26 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectMode
         {
             await _contactUsButton.ClickAsync(new() { Force = true });
         }
+        //public async Task ClickAcceptAllButton()
+        //{
+        //    await _acceptAllButton.ClickAsync();
+        //}
+
         public async Task ClickAcceptAllButton()
         {
-            await _acceptAllButton.ClickAsync();
+            try
+            {
+                if (await _acceptAllButton.IsVisibleAsync(new() { Timeout = 2000 }))
+                {
+                    await _acceptAllButton.ClickAsync(new() { Force = true });
+                }
+            }
+            catch
+            {
+                // Banner not present — ignore
+            }
         }
+
         #endregion
     }
 }
