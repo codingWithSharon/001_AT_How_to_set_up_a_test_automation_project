@@ -29,11 +29,11 @@ jobs:
       - name: Install Playwright browsers
         run: pwsh $(find . -type f -name 'playwright.ps1') install --with-deps
         
-      #- name: Run tests
-      #  run: dotnet test --logger "trx;LogFileName=test-results.trx"
+      - name: Run tests
+        run: dotnet test --logger "trx;LogFileName=test-results.trx"
 
-      - name: Run Playwright tests
-        run: dotnet test --verbosity detailed --logger "trx;LogFileName=test-results.trx"
+      #- name: Run Playwright tests
+      #  run: dotnet test --verbosity detailed --logger "trx;LogFileName=test-results.trx"
 
 
 
