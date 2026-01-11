@@ -15,7 +15,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.H
     public class HomeAutomationexerciseTests : Setup
     {
         [Test, Order(1), Retry(2)]
-        public async Task VerifyAutomationexercisePageLoads()
+        public async Task NavigatingWithNavBar()
         {
             await homeAutomationexercisePage.GoToAutomationexercisePage();
             await Task.Delay(2000);
