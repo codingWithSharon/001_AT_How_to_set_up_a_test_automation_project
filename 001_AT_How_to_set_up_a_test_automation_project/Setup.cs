@@ -4,6 +4,7 @@
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.YouTubePages;
+using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.AutomationexercisePages;
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
@@ -19,6 +20,7 @@ public class Setup : ContextTest
     public LoginSauceDemoPage loginSauceDemoPage = null!;
     public WebshopProductsSauceDemoPage webshopProductsSauceDemoPage = null!;
     public HomeYouTubePage homeYouTubePage = null!;
+    public HomeAutomationexercisePage homeAutomationexercisePage = null!;
 
     public override BrowserNewContextOptions ContextOptions()
     {
@@ -60,6 +62,7 @@ public class Setup : ContextTest
         loginSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages.LoginSauceDemoPage(Page);
         webshopProductsSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages.WebshopProductsSauceDemoPage(Page);
         homeYouTubePage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.YouTubePages.HomeYouTubePage(Page);
+        homeAutomationexercisePage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.AutomationexercisePages.HomeAutomationexercisePage(Page);
     }
 
     [TearDown]
