@@ -82,7 +82,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectMode
         }
         public async Task ClickAcceptAllButton()
         {
-            await _acceptAllButton.ClickAsync(new() { Force = true });
+            await _acceptAllButton.ClickAsync();
         }
         #endregion
     }
