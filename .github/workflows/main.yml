@@ -5,10 +5,11 @@ on:
     branches: [ main ]
   pull_request:
   schedule: 
-    ##- cron: "0 19 * * *" # Run daily at 20:00 Netherlands time (approx)
     - cron: "30 17 * * *" # Run daily at 17:30 Netherlands time
+
 jobs:
-  test:
+
+  ui-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,11 +30,26 @@ jobs:
       - name: Install Playwright browsers
         run: pwsh $(find . -type f -name 'playwright.ps1') install --with-deps
         
-      - name: Run tests
-        run: dotnet test --logger "trx;LogFileName=test-results.trx"
+      - name: Run UI tests
+        run: dotnet test --logger "trx;LogFileName=ui-test-results.trx" --filter "TestCategory!=API"
 
-      #- name: Run Playwright tests
-      #  run: dotnet test --verbosity detailed --logger "trx;LogFileName=test-results.trx"
+  api-tests:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
 
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build project
+        run: dotnet build
+
+      - name: Run API tests
+        run: dotnet test --logger "trx;LogFileName=api-test-results.trx" --filter "TestCategory=API"
