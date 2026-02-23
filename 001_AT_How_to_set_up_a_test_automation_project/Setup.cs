@@ -8,6 +8,7 @@ using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.A
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
+using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.VroegPiekenPages;
 
 namespace PagesSetup;
 
@@ -21,6 +22,8 @@ public class Setup : ContextTest
     public WebshopProductsSauceDemoPage webshopProductsSauceDemoPage = null!;
     public HomeYouTubePage homeYouTubePage = null!;
     public HomeAutomationexercisePage homeAutomationexercisePage = null!;
+    //public ProductAutomationexercisePage productAutomationexercisePage = null!;
+    public VroegPiekenPage vroegPiekenPage = null!;
 
     public override BrowserNewContextOptions ContextOptions()
     {
@@ -63,6 +66,8 @@ public class Setup : ContextTest
         webshopProductsSauceDemoPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages.WebshopProductsSauceDemoPage(Page);
         homeYouTubePage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.YouTubePages.HomeYouTubePage(Page);
         homeAutomationexercisePage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.AutomationexercisePages.HomeAutomationexercisePage(Page);
+        //productAutomationexercisePage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.AutomationexercisePages.ProductAutomationexercisePage(Page);
+        vroegPiekenPage = new _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.VroegPiekenPages.VroegPiekenPage(Page);
     }
 
     [TearDown]

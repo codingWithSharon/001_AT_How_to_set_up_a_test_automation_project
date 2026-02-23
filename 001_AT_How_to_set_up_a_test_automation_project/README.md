@@ -72,6 +72,14 @@ Step 11 : Setup CI/CD pipeline (optional) with GitHub Actionns
 					-	Console.WriteLine do not automatically get printed when the test is run in the pipeline, so you can use a logger instead.
 						There is a flag "-verbosity detailed" that you van add to print the console output in the pipeline logs, but that can cause an error in the pipeline.
 
+## Debugigng
+
+When debugging and just running tests you might want to get a change to look at the actual runtime of a test. For UI tests you can do that by visiting this page https://trace.playwright.dev/.
+Here you can upload the debug file after a testrun to have a closer look at it. You can find these files by folliwing the most default path unless you have it set up differntly.
+
+Default path:
+C:\Users\{username}\source\repos\{projectname}\bin\Debug\net8.0\traces
+
 ## Practice websites
 
 For practice, you can use the following websites:
