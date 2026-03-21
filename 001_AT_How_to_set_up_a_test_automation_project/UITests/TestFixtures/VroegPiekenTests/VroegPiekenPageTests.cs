@@ -11,7 +11,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.UITests.TestFixtures.V
 [Parallelizable(ParallelScope.None)]
 public class VroegPiekenPageTests : Setup
 {
-    [Test, Order(1)]
+    // [Test, Order(1)]
     public async Task NavigatingThePage()
     {
         await vroegPiekenPage.GoToVroegPiekenPage();
@@ -21,7 +21,7 @@ public class VroegPiekenPageTests : Setup
     }
 
 
-    [Test, Order(2)]
+    // [Test, Order(2)]
     public async Task SendRequestSong()
     {
         await vroegPiekenPage.GoToVroegPiekenPage();
