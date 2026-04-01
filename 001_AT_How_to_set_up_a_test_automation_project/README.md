@@ -100,6 +100,7 @@ So if you have a setup like this:
 
 Then make sure you do NOT see this more then once!
 
+
 Default path:
 C:\Users\{username}\source\repos\{projectname}\bin\Debug\net8.0\traces
 
