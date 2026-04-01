@@ -35,11 +35,18 @@
 	<!-- Environment variables (very clean way instead of launchSettings.json) -->
 	<RunConfiguration>
 		<EnvironmentVariables>
+			<!-- UI Base URLs -->
 			<YouTubeBaseUrl>https://www.youtube.com/</YouTubeBaseUrl>
 			<GoogleBaseUrl>https://www.google.nl/</GoogleBaseUrl>
 			<!-- .nl because you're in NL -->
 			<IntranetBaseUrl>https://intranet.mycompany.nl/</IntranetBaseUrl>
 			<!-- Easy switch between environments -->
+			
+			<!-- API Base URLs -->
+			<AutomationExerciseApiBaseUrl>https://automationexercise.com</AutomationExerciseApiBaseUrl>
+			<VroegPiekenApiBaseUrl>https://api.vroegpieken.nl</VroegPiekenApiBaseUrl>
+
+			<!-- Environment -->
 			<TestEnvironment>Development</TestEnvironment>
 		</EnvironmentVariables>
 	</RunConfiguration>

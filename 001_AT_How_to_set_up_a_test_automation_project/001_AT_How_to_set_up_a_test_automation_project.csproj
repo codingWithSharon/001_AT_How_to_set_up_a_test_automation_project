@@ -21,4 +21,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="APITests\Helpers\GenericHelper\" />
+  </ItemGroup>
+
 </Project>

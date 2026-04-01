@@ -1,14 +1,12 @@
-﻿//using Microsoft.Playwright.NUnit;
-
-
+﻿using Microsoft.Playwright;
+using Microsoft.Playwright.NUnit;
+using NUnit.Framework;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.SauceDemoPages;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.YouTubePages;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.AutomationexercisePages;
-using Microsoft.Playwright;
-using Microsoft.Playwright.NUnit;
-using NUnit.Framework;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.VroegPiekenPages;
+using _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.SpecificHelper;
 
 namespace PagesSetup;
 
@@ -17,6 +15,7 @@ public class Setup : ContextTest
     public IAPIRequestContext IAPIRequestContext { get; private set; } = null!;
     public IPage Page { get; private set; } = null!;
 
+    // UI
     public UITestingPlaygroundPage uITestingPlaygroundPage = null!;
     public LoginSauceDemoPage loginSauceDemoPage = null!;
     public WebshopProductsSauceDemoPage webshopProductsSauceDemoPage = null!;
@@ -24,6 +23,10 @@ public class Setup : ContextTest
     public HomeAutomationexercisePage homeAutomationexercisePage = null!;
     //public ProductAutomationexercisePage productAutomationexercisePage = null!;
     public VroegPiekenPage vroegPiekenPage = null!;
+
+    // API
+    public VroegPiekenHelper vroegPiekenHelper = null!;
+    public AutomationExerciseHelper automationExerciseHelper = null!;
 
     public override BrowserNewContextOptions ContextOptions()
     {
@@ -46,10 +49,13 @@ public class Setup : ContextTest
     [SetUp]
     public async Task StartTracing()
     {
-        //IAPIRequestContext = await playwright.APIRequest.NewContextAsync(new APIRequestNewContextOptions
-        //{
-        //    Timeout = 150000
-        //});
+        var playwright = GlobalSetup.Playwright;
+        Page = await Context.NewPageAsync();
+
+        IAPIRequestContext = await playwright.APIRequest.NewContextAsync(new APIRequestNewContextOptions
+        {
+            Timeout = 150000
+        });
 
         Page = await Context.NewPageAsync();
 
@@ -80,6 +86,8 @@ public class Setup : ContextTest
                 $"{TestContext.CurrentContext.Test.Name}.zip");
             Directory.CreateDirectory(Path.GetDirectoryName(path)!);
             await Context.Tracing.StopAsync(new() { Path = path });
+
+            await IAPIRequestContext.DisposeAsync();
         }
     }
 }
