@@ -74,8 +74,31 @@ Step 11 : Setup CI/CD pipeline (optional) with GitHub Actionns
 
 ## Debugigng
 
+### Playwright traces
 When debugging and just running tests you might want to get a change to look at the actual runtime of a test. For UI tests you can do that by visiting this page https://trace.playwright.dev/.
 Here you can upload the debug file after a testrun to have a closer look at it. You can find these files by folliwing the most default path unless you have it set up differntly.
+
+### Common issues with traces when running UI and API tests in the same Playwright project
+Playwright's tracing feature that records videos, screenshots and trace.zip[ files for debugging can only be started oncer per browser context. So when you add API tests you are probably creating
+a Playwright object and starting tracing. So when UI tests run after the API tests, Playwright starts tracing again on the same context.
+
+Quick fix
+Use [OneTimeSetUp] / [OneTimeTearDown] properly
+In your GlobalSetup.cs (or wherever you initialize Playwright), make sure tracing is only started for browser-based tests. During new page setups it is common to copy and paste a lot of things.
+And you might accidently start tracing for API tests as well, which will cause the error "Tracing can only be started once per browser context". So make sure to start tracing only for UI tests and not for API tests.
+
+So if you have a setup like this:
+
+        Setup tracing
+        await Context.Tracing.StartAsync(new()
+        {
+            Title = $"{TestContext.CurrentContext.Test.ClassName}.{TestContext.CurrentContext.Test.Name}",
+            Screenshots = true,
+            Snapshots = true,
+            Sources = true
+        });
+
+Then make sure you do NOT see this more then once!
 
 Default path:
 C:\Users\{username}\source\repos\{projectname}\bin\Debug\net8.0\traces

@@ -1,9 +1,4 @@
 ﻿using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.SpecificHelper
 {
@@ -11,9 +6,18 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.Speci
     {
         private readonly IAPIRequestContext _context;
 
+        private readonly string BaseUrl =
+            Environment.GetEnvironmentVariable("AutomationExerciseApiBaseUrl")
+            ?? throw new InvalidOperationException("AutomationExerciseApiBaseUrl not set.");
+
         public AutomationExerciseHelper(IAPIRequestContext context)
         {
             _context = context;
+        }
+
+        public async Task<IAPIResponse> GetProductsList()
+        {
+            return await _context.GetAsync($"{BaseUrl}/api/productsList");
         }
     }
 }

@@ -51,14 +51,6 @@ public class Setup : ContextTest
     {
         var playwright = GlobalSetup.Playwright;
         Page = await Context.NewPageAsync();
-        // Setup tracing
-        await Context.Tracing.StartAsync(new()
-        {
-            Title = $"{TestContext.CurrentContext.Test.ClassName}.{TestContext.CurrentContext.Test.Name}",
-            Screenshots = true,
-            Snapshots = true,
-            Sources = true
-        });
 
         IAPIRequestContext = await playwright.APIRequest.NewContextAsync(new APIRequestNewContextOptions
         {
