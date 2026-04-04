@@ -20,15 +20,15 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.Speci
             return await _context.GetAsync($"{BaseUrl}/api/productsList");
         }
 
-        public async Task<IAPIResponse> PostAsync(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
-        {
-            var requestOptions = new APIRequestContextOptions
-            {
-                DataObject = data,
-                Headers = headers
-            };
+        //public async Task<IAPIResponse> PostAsync(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
+        //{
+        //    var requestOptions = new APIRequestContextOptions
+        //    {
+        //        DataObject = data,
+        //        Headers = headers
+        //    };
 
-            return await _context.PostAsync($"{BaseUrl}{endpoint}", requestOptions);
-        }
+        //    return await _context.PostAsync($"{BaseUrl}{endpoint}", requestOptions);
+        //}
     }
 }
