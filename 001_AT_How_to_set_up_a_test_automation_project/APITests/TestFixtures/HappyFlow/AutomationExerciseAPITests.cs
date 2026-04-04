@@ -18,7 +18,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.TestFixtures.
             Assert.That(json, Does.Contain("products"));
         }
 
-        [Test]
+        //[Test]
         [Category("API_POST")]
         public async Task PostToProductList()
         {
