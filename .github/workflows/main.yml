@@ -11,7 +11,9 @@ jobs:
 
   ui-tests:
     runs-on: ubuntu-latest
-
+    env:
+      AutomationExerciseApiBaseUrl: "https://automationexercise.com"
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
