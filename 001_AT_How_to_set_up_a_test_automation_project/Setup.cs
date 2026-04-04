@@ -7,6 +7,7 @@ using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.Y
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.AutomationexercisePages;
 using _001_AT_How_to_set_up_a_test_automation_project.UITests.PageObjectModels.VroegPiekenPages;
 using _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.SpecificHelper;
+using _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.GenericHelper;
 
 namespace PagesSetup;
 
@@ -25,6 +26,7 @@ public class Setup : ContextTest
     public VroegPiekenPage vroegPiekenPage = null!;
 
     // API
+    public RequestHelper requestHelper = null!;
     public VroegPiekenHelper vroegPiekenHelper = null!;
     public AutomationExerciseHelper automationExerciseHelper = null!;
 
