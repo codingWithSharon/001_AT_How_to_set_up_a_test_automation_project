@@ -4,9 +4,9 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.Speci
 {
     public class AutomationExerciseHelper
     {
-        private readonly IAPIRequestContext _context;
+        public readonly IAPIRequestContext _context;
 
-        private readonly string BaseUrl =
+        public readonly string BaseUrl =
             Environment.GetEnvironmentVariable("AutomationExerciseApiBaseUrl")
             ?? throw new InvalidOperationException("AutomationExerciseApiBaseUrl not set.");
 
