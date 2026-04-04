@@ -31,7 +31,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.Speci
             return await _context.PostAsync($"{AutomationExerciseBaseUrl}{endpoint}", requestOptions);
         }
 
-        public async Task<IAPIResponse> GetAllBrandsList(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
+        public async Task<IAPIResponse> GetRequest(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
         {
             var requestOptions = new APIRequestContextOptions
             {
@@ -40,6 +40,16 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.Speci
             };
 
             return await _context.GetAsync($"{AutomationExerciseBaseUrl}{endpoint}", requestOptions);
+        }
+
+        public async Task<IAPIResponse> PutRequest(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
+        {
+            var requestOptions = new APIRequestContextOptions
+            {
+                DataObject = data,
+                Headers = headers
+            };
+            return await _context.PutAsync($"{AutomationExerciseBaseUrl}{endpoint}", requestOptions);
         }
     }   
 }
