@@ -20,7 +20,8 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.Speci
             return await _context.GetAsync($"{AutomationExerciseBaseUrl}{endpoint}");
         }
 
-        public async Task<IAPIResponse> PostAsync(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
+        // JSON
+        public async Task<IAPIResponse> PostAsyncJson(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
         {
             var requestOptions = new APIRequestContextOptions
             {
@@ -30,6 +31,48 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.Helpers.Speci
 
             return await _context.PostAsync($"{AutomationExerciseBaseUrl}{endpoint}", requestOptions);
         }
+
+        // ==============================================================================================================
+
+        // Form-urlencoded - Simple & Reliable version
+        //public async Task<IAPIResponse> PostAsyncFormUrlEncoded(string endpoint, Dictionary<string, string> formData, Dictionary<string, string>? headers = null)
+        //{
+        //    var requestOptions = new APIRequestContextOptions
+        //    {
+        //        Form = formData,
+        //        Headers = headers
+        //    };
+        //    return await _context.PostAsync($"{AutomationExerciseBaseUrl}{endpoint}", requestOptions);
+        //}
+
+
+        public async Task<IAPIResponse> PostAsyncFormUrlEncoded(
+            string endpoint,
+            Dictionary<string, string> formData,
+            Dictionary<string, string>? headers = null)
+        {
+            var form = _context.CreateFormData();
+
+            foreach (var kvp in formData)
+            {
+                form.Append(kvp.Key, kvp.Value);
+            }
+
+            var requestOptions = new APIRequestContextOptions
+            {
+                Form = form,
+                Headers = headers
+            };
+
+            return await _context.PostAsync(
+                $"{AutomationExerciseBaseUrl}{endpoint}",
+                requestOptions
+            );
+        }
+
+
+
+        // ==============================================================================================================
 
         public async Task<IAPIResponse> GetRequest(string endpoint, object? data = null, Dictionary<string, string>? headers = null)
         {

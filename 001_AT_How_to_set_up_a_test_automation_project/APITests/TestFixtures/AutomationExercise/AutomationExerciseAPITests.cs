@@ -1,12 +1,14 @@
 ﻿using _001_AT_How_to_set_up_a_test_automation_project.APITests.Models.Responses;
-using NUnit.Framework;
 using FluentAssertions;
+using NUnit.Framework;
 
 namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.TestFixtures.HappyFlow
 {
     [TestFixture]
     public class AutomationExerciseApiTests : ApiSetup
     {
+
+        // json requests //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [Test, Order(1)]
         [Category("API_GET")]
         public async Task GET_ProductsList()
@@ -34,7 +36,7 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.TestFixtures.
                 description = "This is a test product."
             };
 
-            var response = await automationExerciseHelper.PostAsync("/api/productsList", data);
+            var response = await automationExerciseHelper.PostAsyncJson("/api/productsList", data);
 
             // According to AutomationExercise API spec, this endpoint should return 405 when using POST
             response.Status.Should().Be(200);           // This is the main check
@@ -94,25 +96,38 @@ namespace _001_AT_How_to_set_up_a_test_automation_project.APITests.TestFixtures.
             json.Should().Contain("This request method is not supported.");
         }
 
-        //[Test]
-        //[Category("API_POST")]
-        //public async Task POST_ToSearchProductValidation()
-        //{
-        //    var response = await automationExerciseHelper.PostAsync("/api/searchProduct", null, null);
-        //    Assert.That(response.Status, Is.EqualTo(200));
-        //    var json = await response.TextAsync();
+        // x-www-form-urlencoded requests //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        //    TestContext.WriteLine("Response body:");
-        //    TestContext.WriteLine(json);
+        [Test]
+        [Category("API_POST")]
+        public async Task POST_ToSearchProduct()
+        {
+            var formData = new Dictionary<string, string>
+            {
+                { "search_product", "blue top" } // <--Request consists of 1 key-value pair, where the key is "search_product" and the value is "blue top"
+            };
 
-        //    var errorResponse = System.Text.Json.JsonSerializer.Deserialize
-        //    <GenericResponseModels.ApiErrorResponse>(json);
+            var response = await automationExerciseHelper
+                .PostAsyncFormUrlEncoded("/api/searchProduct", formData);
 
-        //    errorResponse.Should().NotBeNull("Failed to deserialize the error response");
-        //    errorResponse.responseCode.Should().Be(405);
-        //    errorResponse.message.Should().Contain("This request method is not supported.");
+            Assert.That(response.Status, Is.EqualTo(200));
 
-        //    json.Should().Contain("This request method is not supported.");
-        //}
+            var json = await response.TextAsync();
+
+            TestContext.WriteLine("Response body:");
+            TestContext.WriteLine(json);
+
+            var result = System.Text.Json.JsonSerializer.Deserialize<SearchProductResponse>(
+                json,
+                new System.Text.Json.JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+            result.Should().NotBeNull();
+            result.responseCode.Should().Be(200);
+            result.products.Should().NotBeNullOrEmpty();
+            result.products.Any(p => p.name.Contains("blue", StringComparison.OrdinalIgnoreCase)).Should().BeTrue("Expected at least one product with 'Blue' in the name");
+        }
     }
 }
